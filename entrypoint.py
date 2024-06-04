@@ -61,3 +61,24 @@ def collect_engine_temperature():
         "current_engine_temperature": current_engine_temperature,
         "average_engine_temperature": average_engine_temperature
         }
+
+"""
+def collect_engine_temperature():
+    database = redis.Redis(host="redis", port=6379, db=0, decode_responses=True)
+    engine_temperature_values = database.lrange(DATA_KEY, 0, -1)
+    logger.info(f"pulled engine temperature values from redis: {engine_temperature_values}")
+
+    datapoint_sum = 0
+    for data_point in engine_temperature_values:
+        datapoint_sum += float(data_point)
+    average_engine_temperature = datapoint_sum / len(engine_temperature_values)
+    logger.info(f"calculated average engine temperature: {average_engine_temperature}")
+    logger.info(f"returning current engine temperature: {engine_temperature_values[0]}")
+
+    result = {
+        "current_engine_temperature": engine_temperature_values[0],
+        "average_engine_temperature": average_engine_temperature
+    }
+    logger.info(f"collect request successful")
+    return result, 200
+"""
